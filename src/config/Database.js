@@ -7,12 +7,12 @@ class Database {
     this.pool = mysql.createPool({
       host: process.env.DB_HOST !== 'production' ? 'localhost' : '0.0.0.0',
       user: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD || '',
+      password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      port: process.env.MYSQL_PORT || 3306,
-      connectionLimit: 10, // Added connection pool limit
-      waitForConnections: true,
-      queueLimit: 0
+      port: process.env.MYSQL_PORT,
+      // connectionLimit: 10, // Added connection pool limit
+      // waitForConnections: true,
+      // queueLimit: 0
     });
     this.testConnection = this.testConnection.bind(this);
   }

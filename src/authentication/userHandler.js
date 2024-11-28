@@ -65,7 +65,7 @@ export const signin = async (req, res) => {
 
       // Verify password using Firebase Auth REST API
       const response = await axios.post(
-          `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCJe1CtPxeTjuQ1M5g9Pua0IAX513HZHkI`, // Replace with your actual API key
+          `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAY9sPBBkfjtfF-HGZ_0VuJsR0zqVFzUhA`, // Replace with your actual API key
           {
               email,
               password,
@@ -75,6 +75,8 @@ export const signin = async (req, res) => {
 
       // If we get here, the password was correct
       const firebaseUser = response.data;
+      console.log('Firebase user:', firebaseUser); // For debugging (remove in production)
+      console.log(response);
 
       // Get additional user info from Admin SDK
       const user = await admin.auth().getUserByEmail(email);

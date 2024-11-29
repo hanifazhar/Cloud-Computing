@@ -10,7 +10,6 @@ import Treatment from "../api/Treatment.js";
 import Article from "../api/Article.js";
 import Blog from "../api/Blog.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
-import { signup, signin } from "../authentication/userHandler.js";
 import Database from "../config/Database.js";
 import express from 'express';
 import path from "path"
@@ -33,9 +32,7 @@ const treatment = new Treatment({ db: db, getTreatment: treatmentService.getTrea
 const article = new Article({ db: db, addImage: storageService.addImage, getArticle: articleService.getArticle, postArticle: articleService.postArticle, putArticle: articleService.putArticle, deleteArticle: articleService.deleteArticle});
 const detection = new Detection({ db: db, addImage: storageService.addImage,  postDetection: detectionService.postDetection, getDetection: detectionService.getDetection, deleteAllDetection: detectionService.deleteAllDetection });
 const blog = new Blog({ db: db, getBlog: blogService.getBlog});
-// console.log(detection);
-router.post('/signup', signup);
-router.post('/signin', signin);
+
 
 // History Routes
 router.get('/detection', verifyToken, detection.getDetectionByIdHandler);

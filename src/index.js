@@ -4,7 +4,7 @@ import router from './routes/routes.js';
 import cors from 'cors'; // Import CORS middleware
 import bodyParser from 'body-parser'; // Import body-parser middleware
 dotenv.config();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 
 
